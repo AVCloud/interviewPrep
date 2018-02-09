@@ -7,6 +7,7 @@ public class BinomialCoefficient {
         int[][] arr = new int[5][3];
         System.out.println(binomialCoefficient(4,2));
         System.out.println(binomialCoefficient(4,2,arr));
+        System.out.println(binoCoefficient(4,2));
     }
 
 /*
@@ -35,5 +36,19 @@ public class BinomialCoefficient {
             }
         }
         return arr[n][k];
+    }
+
+    /*
+        Lesser Space Complexity
+    * */
+    public static int binoCoefficient(int n , int k){
+        int [] res = new int [k+1];
+        res[0] = 1;
+        for (int i = 1; i <= n ; i++) {
+            for (int j = Math.min(i,k); j >0 ; j--) {
+                res[j] = res[j]+res[j-1];
+            }
+        }
+        return  res[k];
     }
 }
