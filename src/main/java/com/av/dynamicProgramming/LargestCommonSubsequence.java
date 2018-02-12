@@ -21,7 +21,7 @@ public class LargestCommonSubsequence {
         }
         System.out.println("Largest common subsequence is "+lcs(X,m,Y,n,arr));
         System.out.println("Largest common subsequence is "+bottomUPLcs(X,Y,m,n,arr));
-
+        System.out.printf("Print the LCS String "+lcsString(arr,X,Y,m,n));
     }
 
     public static int lcs(char[] str,int m,char[] str1, int n){
@@ -76,5 +76,27 @@ public class LargestCommonSubsequence {
         }
 
         return arr[m][n];
+    }
+
+
+    /*printing the LCS String*/
+    public static String lcsString(int[][] arr,char[]ch,char[] ch1,int m,int n){
+        int j = n;
+        int i = m;
+        String str = "";
+        while (i>0&& j>0){
+            if(ch[i-1] == ch1[j-1]){
+                str=ch[i-1]+str;
+                i--;
+                j--;
+            }else if(arr[i-1][j] > arr[i][j-1]){
+                i--;
+            }
+            else {
+                j--;
+            }
+
+        }
+        return str;
     }
 }
