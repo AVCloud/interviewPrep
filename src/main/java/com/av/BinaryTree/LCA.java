@@ -17,6 +17,7 @@ public class LCA {
 
         System.out.println("LCA "+findLCA(node,4,5));
         System.out.println("LCA "+findLCA(node,4,6));
+        System.out.println("LCA "+getLCA(node,4,6).data);
     }
 
 
@@ -63,5 +64,25 @@ public class LCA {
         }
          list.remove(list.size()-1);
         return  false;
+    }
+
+    public static Node getLCA(Node node , int data , int data1){
+        if(node == null){
+            return null;
+        }
+
+        if(node.data == data || node.data == data1){
+            return node;
+        }
+
+        Node leftNode = getLCA(node.left,data,data1);
+        Node rightNode = getLCA(node.right,data,data1);
+
+        if(leftNode!=null && rightNode!=null){
+            return node;
+        }
+
+        return leftNode!=null?leftNode:rightNode;
+
     }
 }
