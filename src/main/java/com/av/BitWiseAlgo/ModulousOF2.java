@@ -8,8 +8,9 @@ public class ModulousOF2 {
 /*
 *   n = 6 (110)
 *   d= 4 (100)
-*
+*   d-1 = 3 (010)
 *   need to return last two bit
+*   n&&(d-1)
 * */
     public static  int getModoulo(int number,int divisor){
         return (number&(divisor-1));
